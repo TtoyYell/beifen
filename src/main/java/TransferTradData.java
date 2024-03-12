@@ -1,16 +1,18 @@
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sun.xml.internal.ws.developer.SerializationFeature;
 
 import java.sql.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author Ye Tianyi
  * @version 1.0
  * @date 2024/3/11 15:19
  */
-public class TransferNetData {
+public class TransferTradData {
 
     private static Map<String, String> areaMap;
     private static Map<String, String> depMap;
