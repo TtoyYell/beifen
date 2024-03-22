@@ -13,7 +13,7 @@ import java.util.List;
 public class SqlFileMerger {
     public static void main(String[] args) throws IOException {
 
-        String folderPath = "D:\\工作\\ad_data";
+        String folderPath = "D:\\工作\\njhw\\user";
 
         // 获取所有sql文件
         File folder = new File(folderPath);

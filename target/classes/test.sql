@@ -1,9 +1,138 @@
-INSERT INTO "net_local_edition" ("id", "created_time", "updated_time", "updated_by", "dispatch_status", "deal_style", "ignored", "deal_at", "assigned_by", "accepted_by", "assigned_at", "assigned_deadline", "deleted", "reviewed", "reviewed_by", "reviewed_at", "supervise", "deal_style2", "ad_title", "category_id", "type", "landing_icp", "start_page", "end_page", "origin", "channel_name", "channel_area", "channel_icp", "advertiser_name", "advertiser_area", "ad_content", "level", "laws", "ad_screenshot", "landing_screenshot", "index_screenshot", "clue", "file_path", "tag_ids", "sp_tag_ids", "create_by", "clue_number", "clue_type", "clue_time", "delay_time", "transfer_party", "complaint_party", "complaint_party_tel", "accepted_department", "accepted_user", "illegal_description", "advertiser_id", "advertiser", "area_id", "evidence", "is_timeout", "is_delay", "action_status", "user_deadline") VALUES (112, '2024-01-01 23:59:59+08', '2024-03-04 10:25:29.674942+08', 1, 3, 0, 'f', '2024-03-04 10:25:29.672567+08', 1, 1, '2024-03-04 10:17:43.5638+08', '2024-04-03 23:59:59+08', 'f', 't', 1, '2024-03-04 23:59:59+08', 'f', NULL, '互联网_0304_test1', 101, 0, NULL, NULL, 'https://c-ssl.dtstatic.com/uploads/item/201712/22/20171222213106_d4Gtr.thumb.1000_0.jpeg', NULL, '互联网线索交办媒体', 1176, NULL, NULL, NULL, 'illegal', 1, '["1"]', '[{"url": "FusAfbSyY3P8Lz0tbRhtxj3NXmwW", "name": "008\u4f5c\u54c1.jpeg"}]', '[{"url": "FusAfbSyY3P8Lz0tbRhtxj3NXmwW", "name": "008\u4f5c\u54c1.jpeg"}]', '[{"url": "FusAfbSyY3P8Lz0tbRhtxj3NXmwW", "name": "008\u4f5c\u54c1.jpeg"}]', '信访', NULL, NULL, NULL, 1, '交办0023', '平台', '2024-01-01 00:00:00+08', NULL, NULL, NULL, NULL, 401, 75, 'illegal', NULL, NULL, 1176, '[{"url": "FusAfbSyY3P8Lz0tbRhtxj3NXmwW", "name": "008\u4f5c\u54c1.jpeg"}]', 'f', NULL, 1, NULL);
-INSERT INTO "net_local_edition" ("id", "created_time", "updated_time", "updated_by", "dispatch_status", "deal_style", "ignored", "deal_at", "assigned_by", "accepted_by", "assigned_at", "assigned_deadline", "deleted", "reviewed", "reviewed_by", "reviewed_at", "supervise", "deal_style2", "ad_title", "category_id", "type", "landing_icp", "start_page", "end_page", "origin", "channel_name", "channel_area", "channel_icp", "advertiser_name", "advertiser_area", "ad_content", "level", "laws", "ad_screenshot", "landing_screenshot", "index_screenshot", "clue", "file_path", "tag_ids", "sp_tag_ids", "create_by", "clue_number", "clue_type", "clue_time", "delay_time", "transfer_party", "complaint_party", "complaint_party_tel", "accepted_department", "accepted_user", "illegal_description", "advertiser_id", "advertiser", "area_id", "evidence", "is_timeout", "is_delay", "action_status", "user_deadline") VALUES (109, '2024-02-29 23:59:59+08', '2024-03-04 14:26:31.8524+08', 1, 0, 0, 'f', NULL, NULL, NULL, NULL, NULL, 'f', 't', 1, '2024-03-01 23:59:59+08', 'f', NULL, '测试lhj互联网3.1晚上新的', 131, 0, NULL, NULL, NULL, NULL, '互联网线索交办媒体', 1176, NULL, NULL, NULL, '违法描述', 1, '["1"]', '[{"url": "https://c-ssl.dtstatic.com/uploads/item/201712/22/20171222213106_d4Gtr.thumb.1000_0.jpeg", "name": ""}]', '[{"url": "https://c-ssl.dtstatic.com/uploads/item/201712/22/20171222213106_d4Gtr.thumb.1000_0.jpeg", "name": ""}]', '[{"url": "https://c-ssl.dtstatic.com/uploads/item/201712/22/20171222213106_d4Gtr.thumb.1000_0.jpeg", "name": ""}]', '群众举报', NULL, NULL, NULL, 1, '3244545', '寄送', '2024-03-01 23:59:59+08', NULL, NULL, NULL, NULL, 403, 609, '违法描述', NULL, NULL, 1176, NULL, 'f', NULL, 99, '2024-03-11 23:59:59+08');
-INSERT INTO "net_local_edition" ("id", "created_time", "updated_time", "updated_by", "dispatch_status", "deal_style", "ignored", "deal_at", "assigned_by", "accepted_by", "assigned_at", "assigned_deadline", "deleted", "reviewed", "reviewed_by", "reviewed_at", "supervise", "deal_style2", "ad_title", "category_id", "type", "landing_icp", "start_page", "end_page", "origin", "channel_name", "channel_area", "channel_icp", "advertiser_name", "advertiser_area", "ad_content", "level", "laws", "ad_screenshot", "landing_screenshot", "index_screenshot", "clue", "file_path", "tag_ids", "sp_tag_ids", "create_by", "clue_number", "clue_type", "clue_time", "delay_time", "transfer_party", "complaint_party", "complaint_party_tel", "accepted_department", "accepted_user", "illegal_description", "advertiser_id", "advertiser", "area_id", "evidence", "is_timeout", "is_delay", "action_status", "user_deadline") VALUES (104, '2024-02-29 23:59:59+08', '2024-03-01 22:06:01.695345+08', 1, 4, 0, 'f', '2024-03-01 22:06:01.691978+08', 1, 1, '2024-03-01 20:54:26.275061+08', '2024-03-11 23:59:59+08', 'f', 't', 1, '2024-03-01 23:59:59+08', 'f', NULL, '测试lhj互联网3.1晚', 131, 0, NULL, NULL, NULL, NULL, '互联网线索交办媒体', 1176, NULL, NULL, NULL, '违法描述', 2, '["1"]', '[{"url": "FqvG7DTUZfRYJcmLPCEHUopFGsrw", "name": "A-11\u7684\u4f5c\u54c1.jpg"}]', '[{"url": "FqvG7DTUZfRYJcmLPCEHUopFGsrw", "name": "A-11\u7684\u4f5c\u54c1.jpg"}]', '[{"url": "FqvG7DTUZfRYJcmLPCEHUopFGsrw", "name": "A-11\u7684\u4f5c\u54c1.jpg"}]', '其他（群众举报）', NULL, NULL, NULL, 1, '3244545', '寄送', '2024-03-01 23:59:59+08', NULL, NULL, NULL, NULL, 403, 609, '违法描述', NULL, NULL, 1176, '[{"url": "FqvG7DTUZfRYJcmLPCEHUopFGsrw", "name": "A-11\u7684\u4f5c\u54c1.jpg"}]', 'f', NULL, 0, NULL);
-INSERT INTO "net_local_edition" ("id", "created_time", "updated_time", "updated_by", "dispatch_status", "deal_style", "ignored", "deal_at", "assigned_by", "accepted_by", "assigned_at", "assigned_deadline", "deleted", "reviewed", "reviewed_by", "reviewed_at", "supervise", "deal_style2", "ad_title", "category_id", "type", "landing_icp", "start_page", "end_page", "origin", "channel_name", "channel_area", "channel_icp", "advertiser_name", "advertiser_area", "ad_content", "level", "laws", "ad_screenshot", "landing_screenshot", "index_screenshot", "clue", "file_path", "tag_ids", "sp_tag_ids", "create_by", "clue_number", "clue_type", "clue_time", "delay_time", "transfer_party", "complaint_party", "complaint_party_tel", "accepted_department", "accepted_user", "illegal_description", "advertiser_id", "advertiser", "area_id", "evidence", "is_timeout", "is_delay", "action_status", "user_deadline") VALUES (107, '2024-02-29 23:59:59+08', '2024-03-01 22:10:37.861913+08', 1, 0, 0, 'f', NULL, NULL, NULL, NULL, NULL, 'f', 't', 1, '2024-03-01 23:59:59+08', 'f', NULL, '测试lhj互联网3.1晚', 131, 0, NULL, NULL, NULL, NULL, '互联网线索交办媒体', 1176, NULL, NULL, NULL, '违法描述', 1, '["1"]', '[{"url": "FusAfbSyY3P8Lz0tbRhtxj3NXmwW", "name": "008\u4f5c\u54c1.jpeg"}]', '[{"url": "FusAfbSyY3P8Lz0tbRhtxj3NXmwW", "name": "008\u4f5c\u54c1.jpeg"}]', '[{"url": "FusAfbSyY3P8Lz0tbRhtxj3NXmwW", "name": "008\u4f5c\u54c1.jpeg"}]', '其他（群众举报）', NULL, NULL, NULL, 1, '3244545', '寄送', '2024-03-01 23:59:59+08', NULL, NULL, NULL, NULL, 403, 609, '违法描述', NULL, NULL, 1176, '[{"url": "FusAfbSyY3P8Lz0tbRhtxj3NXmwW", "name": "008\u4f5c\u54c1.jpeg"}]', 'f', NULL, 0, NULL);
-INSERT INTO "net_local_edition" ("id", "created_time", "updated_time", "updated_by", "dispatch_status", "deal_style", "ignored", "deal_at", "assigned_by", "accepted_by", "assigned_at", "assigned_deadline", "deleted", "reviewed", "reviewed_by", "reviewed_at", "supervise", "deal_style2", "ad_title", "category_id", "type", "landing_icp", "start_page", "end_page", "origin", "channel_name", "channel_area", "channel_icp", "advertiser_name", "advertiser_area", "ad_content", "level", "laws", "ad_screenshot", "landing_screenshot", "index_screenshot", "clue", "file_path", "tag_ids", "sp_tag_ids", "create_by", "clue_number", "clue_type", "clue_time", "delay_time", "transfer_party", "complaint_party", "complaint_party_tel", "accepted_department", "accepted_user", "illegal_description", "advertiser_id", "advertiser", "area_id", "evidence", "is_timeout", "is_delay", "action_status", "user_deadline") VALUES (105, '2024-02-29 23:59:59+08', '2024-03-01 21:13:53.562543+08', 1, 2, 7, 'f', '2024-03-01 21:13:53.56036+08', 1, 609, '2024-03-01 20:57:24.29948+08', '2024-05-30 23:59:59+08', 'f', 't', 1, '2024-03-01 23:59:59+08', 'f', '责令停止发布，在相应范围内消除影响，罚款；没收广告费用；暂停广告发布业务；吊销营业执照；撤销广告审查批准文件、一年内不受理其他广告申请；法律、行政法规规定的其他行政处罚', '测试lhj互联网3.1晚', 131, 0, NULL, NULL, NULL, NULL, '互联网线索交办媒体', 1176, NULL, NULL, NULL, '违法描述', 1, '["1"]', '[{"url": "Foy2K47JxkrgwB-KAHCDTHuqWMmj", "name": "A-11\u7684\u4f5c\u54c1\u56fe\u7247.jpeg"}]', '[{"url": "Foy2K47JxkrgwB-KAHCDTHuqWMmj", "name": "A-11\u7684\u4f5c\u54c1\u56fe\u7247.jpeg"}]', '[{"url": "Foy2K47JxkrgwB-KAHCDTHuqWMmj", "name": "A-11\u7684\u4f5c\u54c1\u56fe\u7247.jpeg"}]', '其他（群众举报）', NULL, NULL, NULL, 1, '3244545', '寄送', '2024-03-01 23:59:59+08', NULL, NULL, NULL, NULL, 403, 609, '违法描述', NULL, NULL, 1176, '[{"url": "Foy2K47JxkrgwB-KAHCDTHuqWMmj", "name": "A-11\u7684\u4f5c\u54c1\u56fe\u7247.jpeg"}]', 'f', NULL, 2, NULL);
-INSERT INTO "net_local_edition" ("id", "created_time", "updated_time", "updated_by", "dispatch_status", "deal_style", "ignored", "deal_at", "assigned_by", "accepted_by", "assigned_at", "assigned_deadline", "deleted", "reviewed", "reviewed_by", "reviewed_at", "supervise", "deal_style2", "ad_title", "category_id", "type", "landing_icp", "start_page", "end_page", "origin", "channel_name", "channel_area", "channel_icp", "advertiser_name", "advertiser_area", "ad_content", "level", "laws", "ad_screenshot", "landing_screenshot", "index_screenshot", "clue", "file_path", "tag_ids", "sp_tag_ids", "create_by", "clue_number", "clue_type", "clue_time", "delay_time", "transfer_party", "complaint_party", "complaint_party_tel", "accepted_department", "accepted_user", "illegal_description", "advertiser_id", "advertiser", "area_id", "evidence", "is_timeout", "is_delay", "action_status", "user_deadline") VALUES (106, '2024-02-29 23:59:59+08', '2024-03-01 22:21:48.596298+08', 1, 4, 0, 'f', '2024-03-01 22:21:48.59365+08', 1, 1, '2024-03-01 22:11:08.595289+08', '2024-05-30 23:59:59+08', 'f', 't', 1, '2024-03-01 23:59:59+08', 'f', NULL, '测试lhj互联网3.1晚', 131, 0, NULL, NULL, NULL, NULL, '互联网线索交办媒体', 1176, NULL, NULL, NULL, '违法描述', 2, '["1"]', '[{"url": "FusAfbSyY3P8Lz0tbRhtxj3NXmwW", "name": "008\u4f5c\u54c1.jpeg"}]', '[{"url": "FusAfbSyY3P8Lz0tbRhtxj3NXmwW", "name": "008\u4f5c\u54c1.jpeg"}]', '[{"url": "FusAfbSyY3P8Lz0tbRhtxj3NXmwW", "name": "008\u4f5c\u54c1.jpeg"}]', '其他（群众举报）', NULL, NULL, NULL, 1, '3244545', '寄送', '2024-03-01 23:59:59+08', NULL, NULL, NULL, NULL, 403, 609, '违法描述', NULL, NULL, 1176, '[{"url": "FusAfbSyY3P8Lz0tbRhtxj3NXmwW", "name": "008\u4f5c\u54c1.jpeg"}]', 'f', NULL, 2, NULL);
-INSERT INTO "net_local_edition" ("id", "created_time", "updated_time", "updated_by", "dispatch_status", "deal_style", "ignored", "deal_at", "assigned_by", "accepted_by", "assigned_at", "assigned_deadline", "deleted", "reviewed", "reviewed_by", "reviewed_at", "supervise", "deal_style2", "ad_title", "category_id", "type", "landing_icp", "start_page", "end_page", "origin", "channel_name", "channel_area", "channel_icp", "advertiser_name", "advertiser_area", "ad_content", "level", "laws", "ad_screenshot", "landing_screenshot", "index_screenshot", "clue", "file_path", "tag_ids", "sp_tag_ids", "create_by", "clue_number", "clue_type", "clue_time", "delay_time", "transfer_party", "complaint_party", "complaint_party_tel", "accepted_department", "accepted_user", "illegal_description", "advertiser_id", "advertiser", "area_id", "evidence", "is_timeout", "is_delay", "action_status", "user_deadline") VALUES (108, '2024-02-29 23:59:59+08', '2024-03-01 22:44:09.935903+08', 1, 1, 0, 'f', '2024-03-01 22:44:09.934173+08', 1, 609, '2024-03-01 22:44:09.931908+08', '2024-03-11 23:59:59+08', 'f', 't', 1, '2024-03-01 23:59:59+08', 'f', NULL, 'net_1', 131, 0, NULL, NULL, NULL, NULL, '互联网线索交办媒体', 1176, NULL, NULL, NULL, '违法描述', 1, '["1"]', '[{"url": "FusAfbSyY3P8Lz0tbRhtxj3NXmwW", "name": "008\u4f5c\u54c1.jpeg"}]', '[{"url": "FusAfbSyY3P8Lz0tbRhtxj3NXmwW", "name": "008\u4f5c\u54c1.jpeg"}]', '[{"url": "FusAfbSyY3P8Lz0tbRhtxj3NXmwW", "name": "008\u4f5c\u54c1.jpeg"}]', '其他（群众举报）', NULL, NULL, NULL, 1, '3244545', '寄送', '2024-03-01 23:59:59+08', NULL, NULL, NULL, NULL, 403, 609, '违法描述', NULL, NULL, 1176, '[{"url": "FusAfbSyY3P8Lz0tbRhtxj3NXmwW", "name": "008\u4f5c\u54c1.jpeg"}]', 'f', NULL, 0, NULL);
-INSERT INTO "net_local_edition" ("id", "created_time", "updated_time", "updated_by", "dispatch_status", "deal_style", "ignored", "deal_at", "assigned_by", "accepted_by", "assigned_at", "assigned_deadline", "deleted", "reviewed", "reviewed_by", "reviewed_at", "supervise", "deal_style2", "ad_title", "category_id", "type", "landing_icp", "start_page", "end_page", "origin", "channel_name", "channel_area", "channel_icp", "advertiser_name", "advertiser_area", "ad_content", "level", "laws", "ad_screenshot", "landing_screenshot", "index_screenshot", "clue", "file_path", "tag_ids", "sp_tag_ids", "create_by", "clue_number", "clue_type", "clue_time", "delay_time", "transfer_party", "complaint_party", "complaint_party_tel", "accepted_department", "accepted_user", "illegal_description", "advertiser_id", "advertiser", "area_id", "evidence", "is_timeout", "is_delay", "action_status", "user_deadline") VALUES (111, '2024-02-29 23:59:59+08', '2024-03-01 22:37:12.106407+08', 1, 1, 0, 'f', '2024-03-01 22:37:12.103013+08', 1, 609, '2024-03-01 22:37:12.099471+08', '2024-03-11 23:59:59+08', 'f', 't', 1, '2024-03-01 23:59:59+08', 'f', NULL, '测测呃呃侧额测url', 131, 0, NULL, NULL, 'https://c-ssl.dtstatic.com/uploads/item/201712/22/20171222213106_d4Gtr.thumb.1000_0.jpeg', NULL, '互联网线索交办媒体', 1176, NULL, NULL, NULL, '违法描述', 1, '["1"]', '[{"url": "FmcsS2CsagO7JUWkNiTWjLyVRR8U", "name": "A-11\u53c2\u8d5b\u8005\u627f\u8bfa\u4e66.jpg"}]', '[{"url": "FmcsS2CsagO7JUWkNiTWjLyVRR8U", "name": "A-11\u53c2\u8d5b\u8005\u627f\u8bfa\u4e66.jpg"}]', '[{"url": "FmcsS2CsagO7JUWkNiTWjLyVRR8U", "name": "A-11\u53c2\u8d5b\u8005\u627f\u8bfa\u4e66.jpg"}]', '其他（群众举报）', NULL, NULL, NULL, 1, '3244545', '寄送', '2024-03-01 23:59:59+08', NULL, NULL, NULL, NULL, 403, 609, '违法描述', NULL, NULL, 1176, '[{"url": "FmcsS2CsagO7JUWkNiTWjLyVRR8U", "name": "A-11\u53c2\u8d5b\u8005\u627f\u8bfa\u4e66.jpg"}]', 'f', NULL, 0, NULL);
-INSERT INTO "net_local_edition" ("id", "created_time", "updated_time", "updated_by", "dispatch_status", "deal_style", "ignored", "deal_at", "assigned_by", "accepted_by", "assigned_at", "assigned_deadline", "deleted", "reviewed", "reviewed_by", "reviewed_at", "supervise", "deal_style2", "ad_title", "category_id", "type", "landing_icp", "start_page", "end_page", "origin", "channel_name", "channel_area", "channel_icp", "advertiser_name", "advertiser_area", "ad_content", "level", "laws", "ad_screenshot", "landing_screenshot", "index_screenshot", "clue", "file_path", "tag_ids", "sp_tag_ids", "create_by", "clue_number", "clue_type", "clue_time", "delay_time", "transfer_party", "complaint_party", "complaint_party_tel", "accepted_department", "accepted_user", "illegal_description", "advertiser_id", "advertiser", "area_id", "evidence", "is_timeout", "is_delay", "action_status", "user_deadline") VALUES (110, '2024-02-29 23:59:59+08', '2024-03-04 09:42:45.71802+08', 1, 4, 0, 'f', '2024-03-04 09:42:45.715899+08', 1, 1, '2024-03-04 09:39:54.830946+08', '2024-06-02 23:59:59+08', 'f', 't', 1, '2024-03-01 23:59:59+08', 'f', NULL, '测试lhj互联网3.1晚上新的', 131, 0, NULL, NULL, NULL, NULL, '互联网线索交办媒体', 1176, NULL, NULL, NULL, '违法描述', 2, '["1"]', '[{"url": "FusAfbSyY3P8Lz0tbRhtxj3NXmwW", "name": "008\u4f5c\u54c1.jpeg"}]', '[{"url": "FusAfbSyY3P8Lz0tbRhtxj3NXmwW", "name": "008\u4f5c\u54c1.jpeg"}]', '[{"url": "FusAfbSyY3P8Lz0tbRhtxj3NXmwW", "name": "008\u4f5c\u54c1.jpeg"}]', '其他（群众举报）', NULL, NULL, NULL, 1, '3244545', '寄送', '2024-03-01 23:59:59+08', NULL, NULL, NULL, NULL, 403, 609, '违法描述', NULL, NULL, 1176, '[{"url": "FusAfbSyY3P8Lz0tbRhtxj3NXmwW", "name": "008\u4f5c\u54c1.jpeg"}]', 'f', NULL, 2, NULL);
+INSERT INTO "public"."trad_local_edition" (
+    "id","created_time","updated_time","updated_by","dispatch_status","deal_style",
+    "ignored","deal_at","assigned_by","accepted_by","assigned_at","assigned_deadline",
+    "deleted", "reviewed","reviewed_by","reviewed_at","supervise","deal_style2",
+    "name","category_id","advertiser_id","channel_id","first_illegal_time","evidence",
+    "level","laws","description","illegal_description","clue","file_path",
+    "tag_ids","sp_tag_ids","create_by","clue_number","clue_type","clue_time",
+    "delay_time","transfer_party","complaint_party","complaint_party_tel",
+    "accepted_department","advertiser","amount","accepted_user",
+    "area_id","is_timeout","is_delay","action_status","user_deadline"
+)
+VALUES
+    (
+        5142,'2023-12-22','2024-01-11 09:38:49',2384,8,0,
+        'f',NULL,2535,2384, '2023-12-22','2024-04-10',
+        'f','t', NULL,NULL,'f',NULL,
+     '健康有医说医', 13,NULL,1,'2023-12-03','[]',
+        1,'["1"]',NULL,'','省局平台派发（登记）',NULL,
+        NULL,NULL, 2535,'2023122204','平台','2023-12-22',
+        NULL,'','杨澜','15091778315',
+     415,NULL,0,2384,
+        1177,'f',NULL,2,NULL
+    );
+
+INSERT INTO "public"."trad_action_local"("created_time", "updated_time", "updated_by", "conn_id", "dispatch_status", "archives",
+                                         "assigned_by", "assigned_by_info", "accepted_by", "accepted_by_info", "note", "supervise", "clue")
+VALUES ('2023-12-22 11:23:33', NULL, NULL, 5142, 1, '[]', 2535,
+        '{"department_id": "401", "department_name": "南京市市场监督管理局", "name": "周瑾璇", "id": "2535"}',
+        2384, '{"department_id": "415", "department_name": "秦淮区市场监督管理局", "name": "马珑珈", "id": "2384"}', '', 'f', NULL);
+
+
+INSERT INTO "public"."trad_action_local"("created_time", "updated_time", "updated_by", "conn_id", "dispatch_status", "archives",
+                                         "assigned_by", "assigned_by_info", "accepted_by", "accepted_by_info", "note", "supervise", "clue")
+VALUES ('2024-01-10 15:07:11', NULL, NULL, 5142, 7, '[]', 2535,
+        '{"department_id": "401", "department_name": "南京市市场监督管理局", "name": "周瑾璇", "id": "2535"}',
+        2384, '{"department_id": "415", "department_name": "秦淮区市场监督管理局", "name": "马珑珈", "id": "2384"}', '', 'f', NULL);
+
+INSERT INTO "public"."trad_action_local"("created_time", "updated_time", "updated_by", "conn_id", "dispatch_status", "archives",
+                                         "assigned_by", "assigned_by_info", "accepted_by", "accepted_by_info", "note", "supervise", "clue")
+VALUES ('2024-01-11 09:38:49', NULL, NULL, 5142, 8, '[{"url": "http://xszhdmp.qiniuoss.xshz.vip/1704937144330.jpg", "name": "20240111-广告科-省广播-立案表（与前期12315举报：丁诚、王安平等并案处理）.jpg"}]', 2535,
+        '{"department_id": "401", "department_name": "南京市市场监督管理局", "name": "周瑾璇", "id": "2535"}',
+        2384, '{"department_id": "415", "department_name": "秦淮区市场监督管理局", "name": "马珑珈", "id": "2384"}', '', 'f', NULL);
+
+
+INSERT INTO "public"."trad_local_edition" (
+    "id","created_time","updated_time","updated_by","dispatch_status","deal_style",
+    "ignored","deal_at","assigned_by","accepted_by","assigned_at","assigned_deadline",
+    "deleted", "reviewed","reviewed_by","reviewed_at","supervise","deal_style2",
+    "name","category_id","advertiser_id","channel_id","first_illegal_time","evidence",
+    "level","laws","description","illegal_description","clue","file_path",
+    "tag_ids","sp_tag_ids","create_by","clue_number","clue_type","clue_time",
+    "delay_time","transfer_party","complaint_party","complaint_party_tel",
+    "accepted_department","advertiser","amount","accepted_user",
+    "area_id","is_timeout","is_delay","action_status","user_deadline"
+)
+VALUES
+    (
+        5139,'2023-12-22','2024-01-11 09:38:11',2384,8,0,
+        'f',NULL,2535,2384, '2023-12-22','2024-04-10',
+        'f','t', NULL,NULL,'f',NULL,
+        '发酵中药；玉茸口服液', 102,NULL,2,'2023-12-03','[]',
+        1,'["1"]',NULL,'','省局平台派发（登记）',NULL,
+        NULL,NULL, 2535,'2023122202','平台','2023-12-22',
+        NULL,'','杨澜','15091778315',
+        415,NULL,0,2384,
+        1177,'f',NULL,2,NULL
+    );
+
+INSERT INTO "public"."trad_action_local"("created_time", "updated_time", "updated_by", "conn_id", "dispatch_status", "archives",
+                                         "assigned_by", "assigned_by_info", "accepted_by", "accepted_by_info", "note", "supervise", "clue")
+VALUES ('2023-12-22 11:15:34', NULL, NULL, 5139, 1, '[{"url": "http://xszhdmp.qiniuoss.xshz.vip/1703214595885.WAV", "name": "1043.WAV"}]', 2535,
+        '{"department_id": "401", "department_name": "南京市市场监督管理局", "name": "周瑾璇", "id": "2535"}',
+        2384, '{"department_id": "415", "department_name": "秦淮区市场监督管理局", "name": "马珑珈", "id": "2384"}', '', 'f', NULL);
+
+
+INSERT INTO "public"."trad_action_local"("created_time", "updated_time", "updated_by", "conn_id", "dispatch_status", "archives",
+                                         "assigned_by", "assigned_by_info", "accepted_by", "accepted_by_info", "note", "supervise", "clue")
+VALUES ('2024-01-10 15:06:35', NULL, NULL, 5139, 7, '[]', 2535,
+        '{"department_id": "401", "department_name": "南京市市场监督管理局", "name": "周瑾璇", "id": "2535"}',
+        2384, '{"department_id": "415", "department_name": "秦淮区市场监督管理局", "name": "马珑珈", "id": "2384"}', '', 'f', NULL);
+
+INSERT INTO "public"."trad_action_local"("created_time", "updated_time", "updated_by", "conn_id", "dispatch_status", "archives",
+                                         "assigned_by", "assigned_by_info", "accepted_by", "accepted_by_info", "note", "supervise", "clue")
+VALUES ('2024-01-11 09:38:11', NULL, NULL, 5139, 8, '[{"url": "http://xszhdmp.qiniuoss.xshz.vip/1704937103927.jpg", "name": "20240111-广告科-省广播-立案表（与前期12315举报：丁诚、王安平等并案处理）.jpg"}]', 2535,
+        '{"department_id": "401", "department_name": "南京市市场监督管理局", "name": "周瑾璇", "id": "2535"}',
+        2384, '{"department_id": "415", "department_name": "秦淮区市场监督管理局", "name": "马珑珈", "id": "2384"}', '', 'f', NULL);
+
+
+
+
+
+INSERT INTO "public"."trad_local_edition" (
+    "id","created_time","updated_time","updated_by","dispatch_status","deal_style",
+    "ignored","deal_at","assigned_by","accepted_by","assigned_at","assigned_deadline",
+    "deleted", "reviewed","reviewed_by","reviewed_at","supervise","deal_style2",
+    "name","category_id","advertiser_id","channel_id","first_illegal_time","evidence",
+    "level","laws","description","illegal_description","clue","file_path",
+    "tag_ids","sp_tag_ids","create_by","clue_number","clue_type","clue_time",
+    "delay_time","transfer_party","complaint_party","complaint_party_tel",
+    "accepted_department","advertiser","amount","accepted_user",
+    "area_id","is_timeout","is_delay","action_status","user_deadline"
+)
+VALUES
+    (
+        5060,'2023-11-27','2023-12-19 10:41:20',2382,8,0,
+        'f',NULL,2377,2382, '2023-11-27','2024-03-18',
+        'f','t', NULL,NULL,'f',NULL,
+        '', 210,NULL,3,'2023-11-27','[]',
+        1,'["1"]',NULL,'','省局平台派发（登记）',NULL,
+        NULL,NULL, 2377,'2023122202','寄送','2023-11-27',
+        NULL,'','','',
+        403,NULL,0,2382,
+        1176,'f',NULL,2,NULL
+    );
+
+INSERT INTO "public"."trad_action_local"("created_time", "updated_time", "updated_by", "conn_id", "dispatch_status", "archives",
+                                         "assigned_by", "assigned_by_info", "accepted_by", "accepted_by_info", "note", "supervise", "clue")
+VALUES ('2023-11-27 08:50:17', NULL, NULL, 5060, 1, '[]', 2377,
+        '{"department_id": "401", "department_name": "南京市市场监督管理局", "name": "周晓杰", "id": "2377"}',
+        2384, '{"department_id": "403", "department_name": "玄武区市场监督管理局", "name": "万华", "id": "2382"}', '', 'f', NULL);
+
+
+INSERT INTO "public"."trad_action_local"("created_time", "updated_time", "updated_by", "conn_id", "dispatch_status", "archives",
+                                         "assigned_by", "assigned_by_info", "accepted_by", "accepted_by_info", "note", "supervise", "clue")
+VALUES ('2023-12-11 09:36:58', NULL, NULL, 5060, 7, '[]', 2377,
+        '{"department_id": "401", "department_name": "南京市市场监督管理局", "name": "周晓杰", "id": "2377"}',
+        2384, '{"department_id": "403", "department_name": "玄武区市场监督管理局", "name": "万华", "id": "2382"}', '', 'f', NULL);
+
+INSERT INTO "public"."trad_action_local"("created_time", "updated_time", "updated_by", "conn_id", "dispatch_status", "archives",
+                                         "assigned_by", "assigned_by_info", "accepted_by", "accepted_by_info", "note", "supervise", "clue")
+VALUES ('2023-12-19 10:41:20', NULL, NULL, 5060, 8, '[{"url": "http://xszhdmp.qiniuoss.xshz.vip/1702953695380.png", "name": "2023110301立案通知.png"}]', 2535,
+        '{"department_id": "401", "department_name": "南京市市场监督管理局", "name": "周晓杰", "id": "2377"}',
+        2384, '{"department_id": "403", "department_name": "玄武区市场监督管理局", "name": "万华", "id": "2382"}', '', 'f', NULL);
+
+INSERT INTO "public"."xianxia_action_local" ( "created_time", "updated_time", "updated_by", "conn_id", "dispatch_status", "archives", "assigned_by",
+                                              "assigned_by_info", "accepted_by", "accepted_by_info", "note", "supervise", "clue" )VALUES
+    ( '2023-09-28T11:12:33', NULL, NULL, 4945, 8, 'null', 2377, '{"department_id":"401","department_name":"南京市市场监督管理局","name":"周晓杰","id":"2377"}', ,
+      '{}', '', 'f', NULL );

@@ -12,13 +12,12 @@ import java.util.Map;
  * @version 1.0
  * @date 2024/3/11 15:19
  */
-public class TransferTradData {
+public class TransferXianxiaData {
 
     private static Map<String, String> areaMap;
     private static Map<String, String> depMap;
     private static Map<String, String> areIdFrmDep;
     private static List<Map<String, String>> userInf;
-    private static Map<String, String> channelInf;
 
     public static void main(String[] args) throws Exception {
 
@@ -27,7 +26,6 @@ public class TransferTradData {
         depMap = getDepMap(postgreConnection);
         areIdFrmDep = getAreaIdFrmDep(postgreConnection);
         userInf = getUserInf(postgreConnection);
-        channelInf = getChannelInf(postgreConnection);
 
         Connection mysqlConnection = getMysqlConnection();
         Statement stmt = mysqlConnection.createStatement();
@@ -40,8 +38,6 @@ public class TransferTradData {
                 "finput_user as '派发方',\n" +
                 "finput_userid as '派发方id',\n" +
                 "fhandle_user as '反馈人员',\n" +
-                "fadissue_date as '播出时段',\n" +
-                "fadissue_times as '条目数',\n" +
                 "fget_regulator as '接收单位',\n" +
                 "fget_regulatorid as '接收单位id',\n" +
                 "fpush_date as '下发时间',\n" +
@@ -63,7 +59,8 @@ public class TransferTradData {
                 "ftipoffs_user as '投诉或举报方',\n" +
                 "ftipoffs_phone as '投诉或举报方联系方式',\n" +
                 "case when fstatus = 10 then '待登记' when fstatus = 20 then '待处理' when fstatus = 30 then '核查中' when fstatus = 40 then '立案调查中' when fstatus =50 then '已办结' when -1 then '作废' end as '派发状态'\n" +
-                "FROM `nj_clue`   where  fadtypes in('广播','广播电视','电视','报纸') and fstatus <> -1 ";
+                "FROM `nj_clue`  where fadtypes in ('南京市建邺区万达广场西公交站旁出租车停靠站','南京市玄武区4号线九华山地铁站1号地铁口看板框架'," +
+                "'南京市玄武区北门桥路新世界中心旁灯箱','店堂广告','户外') and fadtypes <> '' and fadtypes <> '其他' ";
         ResultSet resultSet = stmt.executeQuery(sql);
         List<Map<String, Object>> mapList = resultSetToListMap(resultSet);
         for (Map<String, Object> map : mapList) {
@@ -102,25 +99,29 @@ public class TransferTradData {
             String evidenceJson = mapper.writeValueAsString(evidenceList);
 
             Statement insertStmt = mysqlConnection.createStatement();
-            String insertSql = " INSERT INTO \"public\".\"trad_local_edition\" (\n" +
-                    "    \"id\",\"created_time\",\"updated_time\",\"updated_by\",\"dispatch_status\"," +
-                    "    \"deal_style\", \"ignored\",\"deal_at\",\"assigned_by\",\"accepted_by\"," +
-                    "    \"assigned_at\",\"assigned_deadline\",\"deleted\", \"reviewed\",\"reviewed_by\",\"reviewed_at\",\"supervise\",\"deal_style2\",\n" +
-                    "    \"name\",\"category_id\",\"advertiser_id\",\"channel_id\",\"first_illegal_time\",\"evidence\",\n" +
-                    "    \"level\",\"laws\",\"description\",\"illegal_description\",\"clue\",\"file_path\",\n" +
-                    "    \"tag_ids\",\"sp_tag_ids\",\"create_by\",\"clue_number\",\"clue_type\",\"clue_time\",\n" +
-                    "    \"delay_time\",\"transfer_party\",\"complaint_party\",\"complaint_party_tel\",\n" +
-                    "    \"accepted_department\",\"advertiser\",\"amount\",\"accepted_user\",\n" +
-                    "    \"area_id\",\"is_timeout\",\"is_delay\",\"action_status\",\"user_deadline\"\n" +
-                    " ) " +
+            String insertSql = " INSERT INTO \"public\".\"xianxia_local_edition\" " +
+                    " (\"id\", \"created_time\", \"updated_time\", \"updated_by\", \"dispatch_status\", " +
+                    "\"deal_style\", \"ignored\", \"deal_at\", \"assigned_by\", \"accepted_by\", " +
+                    "\"assigned_at\", \"assigned_deadline\", \"deleted\", \"reviewed\", \"reviewed_by\", " +
+                    "\"reviewed_at\", \"supervise\", \"deal_style2\", \"brand\", \"category_id\", " +
+                    "\"level\", \"laws\", \"clue\", \"file_path\", \"tag_ids\", \"sp_tag_ids\", " +
+                    "\"create_by\", \"clue_number\", \"clue_type\", \"clue_time\", \"delay_time\", " +
+                    "\"transfer_party\", \"complaint_party\", \"complaint_party_tel\", \"accepted_department\", " +
+                    "\"accepted_user\", \"illegal_description\", \"advertiser_id\", \"advertiser\", \"area_id\", " +
+                    "\"evidence\", \"is_timeout\", \"is_delay\", \"action_status\", " +
+                    "\"user_deadline\",\"address\",\"department_id\",\"city\"," +
+                    "\"trade_type_first\",\"monitor_time\",\"pics\"," +
+                    "\"media_type_first_id\",\"media_type_second_id\",\"media_type_first\",\"media_type_second\") " +
                     " VALUES ("+fid+",'"+map.get("创建时间")+"', '"+map.get("修改时间")+"', "+getUserIdByName(Str(map.get("最终修改人")),Str(map.get("接收单位")))+", "+getDispatchStatus(Str(map.get("派发状态")))+"," +
                     " "+getDealStyle(Str(map.get("反馈结果")))+", 'f', "+ forDateNull(map.get("反馈日期")) +", "+getUserIdByName(Str(map.get("派发方")),"南京市市场监督管理局")+", "+getUserIdByName(Str(map.get("反馈人员")),Str(map.get("接收单位")))+", " +
                     " "+ forDateNull(map.get("下发时间")) +", "+ forDateNull(map.get("处理截止时间")) +", 'f', 't', NULL, " +
-                    " NULL, 'f', NULL, '"+map.get("广告标题")+"', "+getCodeByClass(map.get("广告类别"))+", NULL, "+getChannelId(Str(map.get("发布平台")))+", '"+map.get("创建时间")+"', " +
-                    " '"+evidenceJson+"', 1, '[\"1\"]','','','"+getClue(map.get("线索来源"))+"',NULL,NULL,NULL,"+getUserIdByName(Str(map.get("派发方")),"南京市市场监督管理局")+", '"+map.get("交办单号")+"', '"+getClueType(map.get("交办方式"))+"', "+forDateNull(map.get("下发时间"))+", NULL, " +
-                    " '"+map.get("移送或提供线索单位")+"', '"+map.get("投诉或举报方")+"', '"+map.get("投诉或举报方联系方式")+"', '"+getAcceptedDep(map.get("接收单位"))+"','"+map.get("发布平台")+"',"+map.get("条目数")+", " +
-                    " "+getUserIdByName(Str(map.get("反馈人员")),Str(map.get("接收单位")))+", "+getAreaID(map.get("接收单位"))+", 'f', NULL, "+getActionStatus(Str(map.get("派发状态")))+", NULL);\n ";
-
+                    " NULL, 'f', NULL, '"+map.get("广告标题")+"', "+getCodeByClass(map.get("广告类别"))+", 1, '[\"1\"]', '"+getClue(map.get("线索来源"))+"', NULL, NULL, NULL, " +
+                    " "+getUserIdByName(Str(map.get("派发方")),"南京市市场监督管理局")+", '"+map.get("交办单号")+"', '"+getClueType(map.get("交办方式"))+"', "+ forDateNull(map.get("下发时间")) +", NULL, " +
+                    " '"+map.get("移送或提供线索单位")+"', '"+map.get("投诉或举报方")+"', '"+map.get("投诉或举报方联系方式")+"', '"+getAcceptedDep(map.get("接收单位"))+"', " +
+                    " "+getUserIdByName(Str(map.get("反馈人员")),Str(map.get("接收单位")))+", '', NULL, NULL, "+getAreaID(map.get("接收单位"))+", " +
+                    " '"+evidenceJson+"', 'f', NULL, "+getActionStatus(Str(map.get("派发状态")))+", NULL,'"+map.get("发布平台")+"',"+getAcceptedDep(map.get("接收单位"))+",'南京市'," +
+                    " '其他','"+map.get("创建时间")+"','"+extractHttpPart(Str(map.get("链接入口")))+"'," +
+                    " 12,1229,'其他','其他');\n ";
             System.out.println(insertSql);
             if (false) {
                 insertStmt.execute(insertSql);
@@ -160,7 +161,7 @@ public class TransferTradData {
                 }
 
                 Statement insertFlowStmt = mysqlConnection.createStatement();
-                String insertFlowSql = " INSERT INTO \"public\".\"trad_action_local\" ( " +
+                String insertFlowSql = " INSERT INTO \"public\".\"xianxia_action_local\" ( " +
                         " \"created_time\"," +
                         " \"updated_time\"," +
                         " \"updated_by\"," +
@@ -204,24 +205,6 @@ public class TransferTradData {
         mysqlConnection.close();
 
     }
-
-    private static String getChannelId(String pingtai) {
-        if (channelInf.get(pingtai)!= null && !"".equals(channelInf.get(pingtai))) {
-            return channelInf.get(pingtai);
-        } else {
-            if(pingtai.contains("广播")) {
-                return "1";
-            }
-            if  (pingtai.contains("电视")) {
-                return "4";
-            }
-            if  (pingtai.contains("报纸")) {
-                return "5";
-            }
-            return "3";
-        }
-    }
-
 
     private static String forDateNull(Object value) {
         if (value==null || "".equals(value)) {
@@ -319,9 +302,6 @@ public class TransferTradData {
         if (finputUser.contains("浦口区局")) {
             finputUser = "汪传林";
         }
-        if (finputUser.contains("秦淮区局")) {
-            finputUser = "马珑珈";
-        }
 
         if (finputUser== null || "".equals(finputUser) || "null".equals(finputUser)) {
             dep = dep.replace("南京","").replace("经济开发区市场监督管理局","经济技术开发区市场监督管理局");
@@ -385,20 +365,6 @@ public class TransferTradData {
         ResultSet resultSet = statement.executeQuery(sql);
         while (resultSet.next()){
             String id = resultSet.getString("area_id");
-            String name = resultSet.getString("name");
-            res.put(name,id);
-        }
-        return res;
-    }
-
-
-    private static Map<String, String> getChannelInf(Connection postgreConnection) throws SQLException {
-        Map<String,String> res = new HashMap<>();
-        Statement statement = postgreConnection.createStatement();
-        String sql = " select id,name from trad_channel ";
-        ResultSet resultSet = statement.executeQuery(sql);
-        while (resultSet.next()){
-            String id = resultSet.getString("id");
             String name = resultSet.getString("name");
             res.put(name,id);
         }
@@ -537,9 +503,6 @@ public class TransferTradData {
         categoryMap.put("钟表眼镜","148");categoryMap.put("零售","210");categoryMap.put("非处方药","102");categoryMap.put("非处方药/保健食品","119");
         categoryMap.put("音像印刷出版物","135");categoryMap.put("食品","5");categoryMap.put("食用油脂","5");categoryMap.put("餐饮服务","189");
         categoryMap.put("饮料","110");categoryMap.put("饮料和饮料添加剂","110");categoryMap.put("饲料和饲料添加剂","110");categoryMap.put("首饰","147");
-        if (categoryMap.get(Str(adClass)) == null) {
-            return "210";
-        }
         return categoryMap.get(Str(adClass));
     }
 
@@ -607,10 +570,6 @@ public class TransferTradData {
         if (userName.contains("浦口区局")) {
             userName = "汪传林";
         }
-        if (userName.contains("秦淮区局")) {
-            userName = "马珑珈";
-        }
-
         if (userName== null || "".equals(userName) || "null".equals(userName)) {
             dep = dep.replace("南京","").replace("经济开发区市场监督管理局","经济技术开发区市场监督管理局");
             if (dep.equals("南京市市场监督管理局")) {
@@ -684,7 +643,7 @@ public class TransferTradData {
     }
     private static String getActionStatus(String paiFazt) {
         if (paiFazt.equals("待处理")) {
-            return "0";
+            return "1";
         } else if (paiFazt.equals("核查中")) {
             return "1";
         } else if (paiFazt.equals("立案调查中")) {

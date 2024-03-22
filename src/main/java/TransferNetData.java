@@ -2,6 +2,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.xml.internal.ws.developer.SerializationFeature;
 
+import java.io.FileWriter;
 import java.sql.*;
 import java.util.*;
 
@@ -17,7 +18,11 @@ public class TransferNetData {
     private static Map<String, String> areIdFrmDep;
     private static List<Map<String, String>> userInf;
 
+
     public static void main(String[] args) throws Exception {
+
+        String targetFile = "C:\\Users\\Admin\\Desktop\\数据.sql";
+        FileWriter writer = new FileWriter(targetFile);
 
         Connection postgreConnection = getPostgreConnection();
         areaMap = getAreaMap(postgreConnection);
@@ -57,7 +62,7 @@ public class TransferNetData {
                 "ftipoffs_user as '投诉或举报方',\n" +
                 "ftipoffs_phone as '投诉或举报方联系方式',\n" +
                 "case when fstatus = 10 then '待登记' when fstatus = 20 then '待处理' when fstatus = 30 then '核查中' when fstatus = 40 then '立案调查中' when fstatus =50 then '已办结' when -1 then '作废' end as '派发状态'\n" +
-                "FROM `nj_clue`  where fadtypes not in ('其他','南京市建邺区万达广场西公交站旁出租车停靠站','南京市玄武区4号线九华山地铁站1号地铁口看板框架','南京市玄武区北门桥路新世界中心旁灯箱','广播','广播电视','店堂广告','户外',\n" +
+                "FROM `nj_clue`  where fadtypes not in ('南京市建邺区万达广场西公交站旁出租车停靠站','南京市玄武区4号线九华山地铁站1号地铁口看板框架','南京市玄武区北门桥路新世界中心旁灯箱','广播','广播电视','店堂广告','户外',\n" +
                 "'报纸','电视') and fadtypes <> '' and fadtypes <> '其他' ";
         ResultSet resultSet = stmt.executeQuery(sql);
         List<Map<String, Object>> mapList = resultSetToListMap(resultSet);
@@ -111,19 +116,21 @@ public class TransferNetData {
                     "\"accepted_user\", \"illegal_description\", \"advertiser_id\", \"advertiser\", \"area_id\", " +
                     "\"evidence\", \"is_timeout\", \"is_delay\", \"action_status\", " +
                     "\"user_deadline\") " +
-                    " VALUES ("+fid+",'"+map.get("创建时间")+"', '"+map.get("修改时间")+"', "+getUserIdByName(Str(map.get("最终修改人")))+", "+getDispatchStatus(Str(map.get("派发状态")))+"," +
-                    " "+getDealStyle(Str(map.get("反馈结果")))+", 'f', '"+map.get("反馈日期")+"', "+getUserIdByName(Str(map.get("派发方")))+", "+getUserIdByName(Str(map.get("反馈人员")))+", " +
-                    " '"+map.get("下发时间")+"', '"+map.get("处理截止时间")+"', 'f', 't', NULL, " +
-                    " NULL, 'f', NULL, '"+map.get("广告标题")+"', "+getCodeByClass(map.get("广告类别"))+", " +
+                    " VALUES ("+fid+",'"+map.get("创建时间")+"', "+forDateNull(map.get("修改时间"))+", "+getUserIdByName(Str(map.get("最终修改人")),Str(map.get("接收单位")))+", "+getDispatchStatus(Str(map.get("派发状态")))+"," +
+                    " "+getDealStyle(Str(map.get("反馈结果")))+", 'f', "+ forDateNull(map.get("反馈日期")) +", "+getUserIdByName(Str(map.get("派发方")),"南京市市场监督管理局")+", "+getUserIdByName(Str(map.get("反馈人员")),Str(map.get("接收单位")))+", " +
+                    " "+forDateNull(map.get("下发时间"))+", "+forDateNull(map.get("处理截止时间"))+", 'f', 't', NULL, " +
+                    " NULL, 'f', NULL, '"+Str(map.get("广告标题")).replace("'","''")+"', "+getCodeByClass(map.get("广告类别"))+", " +
                     " "+getTypeFromFadTypes(map.get("广告类型"))+", '"+map.get("链接入口")+"', '"+map.get("链接入口")+"', '"+map.get("链接入口")+"', NULL, " +
-                    " '"+map.get("发布平台")+"', 113, NULL, '"+map.get("广告主名称")+"', NULL, " +
-                    " '"+map.get("广告内容")+"', 1, '[\"1\"]', NULL, '[]'," +
+                    " '"+map.get("发布平台")+"', 113, NULL, '"+Str(map.get("广告主名称")).replace("'","''")+"', NULL, " +
+                    " '"+Str(map.get("广告内容")).replace("'","''")+"', 1, '[\"1\"]', NULL, '[]'," +
                     " '[]', '"+getClue(map.get("线索来源"))+"', NULL, NULL, NULL, " +
-                    " "+getUserIdByName(Str(map.get("派发方")))+", '"+map.get("交办单号")+"', '"+getClueType(map.get("交办方式"))+"', '"+map.get("下发时间")+"', NULL, " +
+                    " "+getUserIdByName(Str(map.get("派发方")),"南京市市场监督管理局")+", '"+map.get("交办单号")+"', '"+getClueType(map.get("交办方式"))+"', "+forDateNull(map.get("下发时间"))+", NULL, " +
                     " '"+map.get("移送或提供线索单位")+"', '"+map.get("投诉或举报方")+"', '"+map.get("投诉或举报方联系方式")+"', '"+getAcceptedDep(map.get("接收单位"))+"', " +
-                    " "+getUserIdByName(Str(map.get("反馈人员")))+", '', NULL, NULL, "+getAreaID(map.get("接收单位"))+", " +
-                    " '"+evidenceJson+"', 'f', NULL, 1, NULL);\n ";
+                    " "+getUserIdByName(Str(map.get("反馈人员")),Str(map.get("接收单位")))+", '', NULL, NULL, "+getAreaID(map.get("接收单位"))+", " +
+                    " '"+evidenceJson+"', 'f', NULL, "+getActionStatus(Str(map.get("派发状态")))+", NULL);\n ";
             System.out.println(insertSql);
+            writer.write(insertSql+"\n");
+            writer.flush();
             if (false) {
                 insertStmt.execute(insertSql);
             }
@@ -185,15 +192,17 @@ public class TransferNetData {
                         "  "+flow.get("系统相关广告id")+"," +
                         "  "+getDispatchStatus(Str(flow.get("派发状态")))+"," +
                         "  '"+getFileJson(flow.get("file"))+"'," +
-                        "  "+getUserIdByName(Str(flow.get("finput_user")))+"," +
-                        "  '"+getUserJson(Str(flow.get("finput_user")))+"'," +
-                        "  "+getUserIdByName(Str(flow.get("处理人")))+"," +
-                        "  '"+getUserJson(Str(flow.get("处理人")))+"'," +
+                        "  "+getUserIdByName(Str(flow.get("finput_user")),"南京市市场监督管理局")+"," +
+                        "  '"+getUserJson(Str(flow.get("finput_user")),"南京市市场监督管理局")+"'," +
+                        "  "+getUserIdByName(Str(flow.get("处理人")), Str(map.get("接收单位"))) +"," +
+                        "  '"+getUserJson(Str(flow.get("处理人")), Str(map.get("接收单位")))+"'," +
                         "  '"+note+"'," +
                         "  'f'," +
                         "  NULL " +
                         " );";
                 System.out.println(insertFlowSql);
+                writer.write("\n"+insertFlowSql+"\n");
+                writer.flush();
                 if (false) {
                     insertFlowStmt.execute(insertFlowSql);
                 }
@@ -216,7 +225,10 @@ public class TransferNetData {
         for (String s : fileString.split(";")) {
             Map<String,String> map = new HashMap<>();
             String url = s.split("->")[0];
-            String name = s.split("->")[1];
+            String name = "";
+            if (s.split("->").length>1){
+                name = s.split("->")[1];
+            }
             map.put("url",url);
             map.put("name",name);
             jsonList.add(map);
@@ -256,7 +268,17 @@ public class TransferNetData {
         return res;
     }
 
-    private static String getUserJson(String finputUser) throws JsonProcessingException {
+    private static String getUserJson(String finputUser,String dep) throws JsonProcessingException {
+        finputUser = removeBracketContent(finputUser);
+        if (finputUser.equals("南京演示")) {
+            finputUser = "陈慧";
+        }
+        if (finputUser.equals("南京市局")) {
+            finputUser = "陈慧";
+        }
+        if (finputUser.equals("倪蒙")) {
+            finputUser = "陈慧";
+        }
         if (finputUser.equals("夏妍")) {
             finputUser = "万华";
         }
@@ -264,6 +286,9 @@ public class TransferNetData {
             finputUser = "金海涛";
         }
         if (finputUser.contains("王洁霏")) {
+            finputUser = "王凡凡";
+        }
+        if (finputUser.contains("建邺区局")) {
             finputUser = "王凡凡";
         }
         if (finputUser.contains("邱巧珍")) {
@@ -274,6 +299,52 @@ public class TransferNetData {
         }
         if (finputUser.contains("浦口区局")) {
             finputUser = "汪传林";
+        }
+
+        if (finputUser== null || "".equals(finputUser) || "null".equals(finputUser)) {
+            dep = dep.replace("南京","").replace("经济开发区市场监督管理局","经济技术开发区市场监督管理局");
+            if (dep.equals("南京市市场监督管理局")) {
+                finputUser = "陈慧";
+            }
+            if (dep.equals("玄武区市场监督管理局")) {
+                finputUser = "万华";
+            }
+            if (dep.equals("秦淮区市场监督管理局")) {
+                finputUser = "马珑珈";
+            }
+            if (dep.equals("建邺区市场监督管理局")) {
+                finputUser = "王凡凡";
+            }
+            if (dep.equals("鼓楼区市场监督管理局")) {
+                finputUser = "谢刚";
+            }
+            if (dep.equals("栖霞区市场监督管理局")) {
+                finputUser = "李传伟";
+            }
+            if (dep.equals("雨花台区市场监督管理局")) {
+                finputUser = "金海涛";
+            }
+            if (dep.equals("江宁区市场监督管理局")) {
+                finputUser = "汪婷";
+            }
+            if (dep.equals("浦口区市场监督管理局")) {
+                finputUser = "邢骏";
+            }
+            if (dep.equals("六合区市场监督管理局")) {
+                finputUser = "章荣";
+            }
+            if (dep.equals("溧水区市场监督管理局")) {
+                finputUser = "涂磊";
+            }
+            if (dep.equals("高淳区市场监督管理局")) {
+                finputUser = "丁超";
+            }
+            if (dep.equals("江北新区市场监督管理局")) {
+                finputUser = "韩丽";
+            }
+            if (dep.equals("经济技术开发区市场监督管理局")) {
+                finputUser = "肖红军";
+            }
         }
         Map<String, String> userMap = new HashMap<>();
         for (Map<String, String> map : userInf) {
@@ -325,11 +396,11 @@ public class TransferNetData {
     }
 
     private static String getAcceptedDep(Object acepDep) {
-        return depMap.get(Str(acepDep).replace("南京",""));
+        return depMap.get(Str(acepDep).replace("南京","").replace("经济开发区市场监督管理局","经济技术开发区市场监督管理局"));
     }
 
     private static String getAreaID(Object dep) {
-        return areIdFrmDep.get(Str(dep).replace("南京",""));
+        return areIdFrmDep.get(Str(dep).replace("南京","").replace("经济开发区市场监督管理局","经济技术开发区市场监督管理局"));
     }
 
     private static String getClueType(Object clueType) {
@@ -430,6 +501,7 @@ public class TransferNetData {
         categoryMap.put("钟表眼镜","148");categoryMap.put("零售","210");categoryMap.put("非处方药","102");categoryMap.put("非处方药/保健食品","119");
         categoryMap.put("音像印刷出版物","135");categoryMap.put("食品","5");categoryMap.put("食用油脂","5");categoryMap.put("餐饮服务","189");
         categoryMap.put("饮料","110");categoryMap.put("饮料和饮料添加剂","110");categoryMap.put("饲料和饲料添加剂","110");categoryMap.put("首饰","147");
+        categoryMap.put("","210");
         return categoryMap.get(Str(adClass));
     }
 
@@ -465,12 +537,26 @@ public class TransferNetData {
     }
 
 
-    private static String getUserIdByName(String userName) {
+    private static String getUserIdByName(String userName,String dep) {
+        userName = removeBracketContent(userName);
+
+        if (userName.equals("南京演示")) {
+            userName = "陈慧";
+        }
+        if (userName.equals("南京市局")) {
+            userName = "陈慧";
+        }
+        if (userName.equals("倪蒙")) {
+            userName = "陈慧";
+        }
         if (userName.equals("夏妍")) {
             userName = "万华";
         }
         if (userName.equals("唐传众")) {
             userName = "金海涛";
+        }
+        if (userName.contains("建邺区局")) {
+            userName = "王凡凡";
         }
         if (userName.contains("王洁霏")) {
             userName = "王凡凡";
@@ -484,12 +570,59 @@ public class TransferNetData {
         if (userName.contains("浦口区局")) {
             userName = "汪传林";
         }
+        if (userName== null || "".equals(userName) || "null".equals(userName)) {
+            dep = dep.replace("南京","").replace("经济开发区市场监督管理局","经济技术开发区市场监督管理局");
+            if (dep.equals("南京市市场监督管理局")) {
+                userName = "陈慧";
+            }
+            if (dep.equals("玄武区市场监督管理局")) {
+                userName = "万华";
+            }
+            if (dep.equals("秦淮区市场监督管理局")) {
+                userName = "马珑珈";
+            }
+            if (dep.equals("建邺区市场监督管理局")) {
+                userName = "王凡凡";
+            }
+            if (dep.equals("鼓楼区市场监督管理局")) {
+                userName = "谢刚";
+            }
+            if (dep.equals("栖霞区市场监督管理局")) {
+                userName = "李传伟";
+            }
+            if (dep.equals("雨花台区市场监督管理局")) {
+                userName = "金海涛";
+            }
+            if (dep.equals("江宁区市场监督管理局")) {
+                userName = "汪婷";
+            }
+            if (dep.equals("浦口区市场监督管理局")) {
+                userName = "邢骏";
+            }
+            if (dep.equals("六合区市场监督管理局")) {
+                userName = "章荣";
+            }
+            if (dep.equals("溧水区市场监督管理局")) {
+                userName = "涂磊";
+            }
+            if (dep.equals("高淳区市场监督管理局")) {
+                userName = "丁超";
+            }
+            if (dep.equals("江北新区市场监督管理局")) {
+                userName = "韩丽";
+            }
+            if (dep.equals("经济技术开发区市场监督管理局")) {
+                userName = "肖红军";
+            }
+        }
+
         String id = "";
         for (Map<String, String> map : userInf) {
             if (userName.equals(map.get("name"))){
                 id = map.get("id");
             }
         }
+
         return id;
     }
 
@@ -624,4 +757,29 @@ public class TransferNetData {
         return result;
     }
 
+    private static String forDateNull(Object value) {
+        if (value==null || "".equals(value)) {
+            return "NULL";
+        } else {
+            return "'"+Str(value)+"'";
+        }
+    }
+    private static String forNull(Object value) {
+        if (value==null || "".equals(value)) {
+            return "NULL";
+        } else {
+            return Str(value);
+        }
+    }
+    public static String removeBracketContent(String text) {
+        int start;
+        while((start = text.indexOf("（")) != -1) {
+            int end = text.indexOf("）", start);
+            if(end != -1) {
+                text = text.substring(0, start) + text.substring(end + 1);
+            }
+        }
+
+        return text;
+    }
 }
