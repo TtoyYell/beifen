@@ -118,7 +118,8 @@ public class TransferTradData {
                     " "+ forDateNull(map.get("下发时间")) +", "+ forDateNull(map.get("处理截止时间")) +", 'f', 't', NULL, " +
                     " NULL, 'f', NULL, '"+map.get("广告标题")+"', "+getCodeByClass(map.get("广告类别"))+", NULL, "+getChannelId(Str(map.get("发布平台")))+", '"+map.get("创建时间")+"', " +
                     " '"+evidenceJson+"', 1, '[\"1\"]','','','"+getClue(map.get("线索来源"))+"',NULL,NULL,NULL,"+getUserIdByName(Str(map.get("派发方")),"南京市市场监督管理局")+", '"+map.get("交办单号")+"', '"+getClueType(map.get("交办方式"))+"', "+forDateNull(map.get("下发时间"))+", NULL, " +
-                    " '"+map.get("移送或提供线索单位")+"', '"+map.get("投诉或举报方")+"', '"+map.get("投诉或举报方联系方式")+"', '"+getAcceptedDep(map.get("接收单位"))+"','"+map.get("发布平台")+"',"+map.get("条目数")+", " +
+                    " '"+map.get("移送或提供线索单位")+"', '"+map.get("投诉或举报方")+"', '"+map.get("投诉或举报方联系方式")+"'," +
+                    " '"+getAcceptedDep(map.get("接收单位"))+"','"+map.get("发布平台")+"',"+map.get("条目数")+", " +
                     " "+getUserIdByName(Str(map.get("反馈人员")),Str(map.get("接收单位")))+", "+getAreaID(map.get("接收单位"))+", 'f', NULL, "+getActionStatus(Str(map.get("派发状态")))+", NULL);\n ";
 
             System.out.println(insertSql);

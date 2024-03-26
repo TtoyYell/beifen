@@ -36,6 +36,7 @@ public class HuwaiBeianData {
                 "license_id as license,  " +
                 "real_name as user,  " +
                 "user_mobile as mobile,  " +
+                "user_status as validity,  " +
                 " DATE_FORMAT(FROM_UNIXTIME(create_time), '%Y-%m-%d') AS create_time " +
                 "from user a left join company_type b  " +
                 "on a.company_type = b.type_id ";
@@ -45,6 +46,7 @@ public class HuwaiBeianData {
             Statement insertStmt = postgreConnection.createStatement();
             String insertSql = " INSERT INTO \"customer\" ( " +
                     " \"id\",  " +
+                    " \"created_time\", " +
                     " \"username\",  " +
                     " \"password\",  " +
                     " \"serial\",  " +
@@ -61,6 +63,7 @@ public class HuwaiBeianData {
                     "VALUES  " +
                     " (  " +
                     "  "+i+",  " +
+                    "  '2024-02-29 13:34:10.117606+08', " +
                     "  '"+mapList.get(i-2547).get("username")+"',  " +
                     "  '$2b$12$zv.hzoWu5600MVq2Rup0pO1YQWGrLKukD800/jGQmYCeqsqsDr8OS',  " +
                     "  '001',  " +
@@ -77,7 +80,14 @@ public class HuwaiBeianData {
             System.out.println(insertSql);
             writer.write(insertSql+"\n");
             writer.flush();
-
+            String validity = "f";
+            validity = Str(mapList.get(i-2547).get("validity"));
+            if ("0".equals(validity)) {
+                validity = "t";
+            }
+            if ("1".equals(validity)) {
+                validity = "f";
+            }
             String insertSql2 = " INSERT INTO \"public\".\"enterprise_users\"(\"id\" ,\"created_time\", \"updated_time\", \"updated_by\", " +
                     "\"name\", \"type\", \"username\", \"addr\", \"validity\", \"enterprise\", \"legal\", \"license\", \"user\", \"mobile\", " +
                     "\"customer_id\") VALUES ("+mapList.get(i-2547).get("user_id")+","+forDateNull(mapList.get(i-2547).get("create_time"))+", NULL, NULL, '"+mapList.get(i-2547).get("name")+"', " +

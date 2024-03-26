@@ -124,4 +124,6 @@ VALUES
 
 INSERT INTO "public"."pub_part"("created_time",  "name", "addr", "enterprise", "license", "number", "user", "mobile", "price", "scale","save", "check", "view", "note", "view_at", "task", "users", "submit_at", "submit_num")
  VALUES ('2015-09-24 11:03:29', '南京昂帝格派克文化传媒有限公司', '南京市秦淮区瑞金路25号', '国有企业', '320103000275359', 'null', '张军',
-                                                                                                                                                                                                                                       '13905174618', '', '', 't', NULL, 3, '', NULL, 77, 3467, '2015-09-24 11:03:29', '2015092400202');
+
+
+                                                                                                                                  '13905174618', '', '', 't', NULL, 3, '', NULL, 77, 3467, '2015-09-24 11:03:29', '2015092400202');

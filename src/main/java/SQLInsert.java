@@ -18,14 +18,14 @@ import java.util.List;
  */
 public class SQLInsert {
 
-    private static final String FILE_PATH = "C:\\Users\\Admin\\Desktop\\测试文件\\数据库导入\\xianxia_suspect_illegal.sql";
+    private static final String FILE_PATH = "C:\\Users\\Admin\\Desktop\\数据2.sql";
     private static final String URL = "http://10.192.18.226:30080/api/datasync_outdoor/execute_sql_file";
 
     public static void main(String[] args) throws IOException, InterruptedException {
 
         System.setProperty( "org.apache.commons.logging.Log", "org.apache.commons.logging.impl.NoOpLog" );
         int lineCount = readLineCount(FILE_PATH); // 获取总行数
-        int batchSize = 500;
+        int batchSize = 250;
 
 
         BufferedReader br = new BufferedReader(new FileReader(FILE_PATH));
@@ -188,7 +188,7 @@ public class SQLInsert {
             //httpPost.setHeader("Content-Length", String.valueOf(1900));
             //httpPost.setHeader("Content-Type", "multipart/form-data; boundary=----WebKitFormBoundaryDCfDFBAzpV6AOO7N");
             httpPost.setHeader("Cookie", "timestamp=1709285981708");
-            httpPost.setHeader("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ6UTNMdzNuVWRlM2tKV1ZzZWxEeFR1T3BscllleEJNaiIsImV4cCI6MTcwOTU5MjU2OSwibmJmIjoxNzA5NTIwNTY5LCJpYXQiOjE3MDk1MjA1Njl9.GKToFYMDLNMZuroTO_6V7u4KypEzdM_1oV3RdJvzPyY");
+            httpPost.setHeader("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkeVU3aWhOUHBnTWJ4eVJCR1d2cG0zVDNZTGRXSWt1NyIsImV4cCI6MTcxMTQwMjk3NCwibmJmIjoxNzExMzMwOTc0LCJpYXQiOjE3MTEzMzA5NzR9.GkIhemGe5xDe0ugV0TbdJxCSravuhBY0-5VUUflyVNA");
             httpPost.setHeader("Connection", "keep-alive");
             httpPost.setHeader("Accept-Encoding", "gzip, deflate, br");
             httpPost.setHeader("Accept", "*/*");

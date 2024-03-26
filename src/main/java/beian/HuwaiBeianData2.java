@@ -182,7 +182,6 @@ public class HuwaiBeianData2 {
             writer.write(insertSql+"\n");
             writer.flush();
 
-
             if (false) {
                 insertStmt.execute(insertSql);
                 insertStmt.execute(insertTaskSql);
@@ -320,7 +319,7 @@ public class HuwaiBeianData2 {
                     String auditor = matcher.group(1);
                     String reason = matcher.group(2);
                     map.put("users",auditor);
-                    map.put("note",reason);
+                    map.put("note",reason.replace("'","''"));
                 }
                 resList.add(map);
             }
@@ -401,14 +400,14 @@ public class HuwaiBeianData2 {
         } else if ("其它".equals(Str(areaType))) {
             return "15";
         } else {
-            return "NULL";
+            return "15";
         }
     }
 
     private static String NullToBlank(Object area) {
         if (area == null) {
             return "";
-        } else return Str(area);
+        } else return Str(area).replace("'","''");
     }
 
 
@@ -450,7 +449,7 @@ public class HuwaiBeianData2 {
         } else if ("其它".equals(Str(modus))) {
             return "17";
         }  else {
-            return "NULL";
+            return "17";
         }
     }
 
@@ -461,42 +460,42 @@ public class HuwaiBeianData2 {
             return "2";
         } else if ("节日类".equals(Str(type))) {
             return "3";
-        }  else if ("节日类".equals(Str(type))) {
+        }  else if ("健康类".equals(Str(type))) {
             return "4";
-        } else if ("节日类".equals(Str(type))) {
+        } else if ("社会焦点类".equals(Str(type))) {
             return "5";
-        } else if ("节日类".equals(Str(type))) {
+        } else if ("其它".equals(Str(type))) {
             return "6";
-        } else if ("节日类".equals(Str(type))) {
+        } else if ("医疗".equals(Str(type))) {
             return "7";
-        } else if ("节日类".equals(Str(type))) {
+        } else if ("药品".equals(Str(type))) {
             return "8";
-        } else if ("节日类".equals(Str(type))) {
+        } else if ("医疗器械".equals(Str(type))) {
             return "9";
-        } else if ("节日类".equals(Str(type))) {
+        } else if ("保健食品".equals(Str(type))) {
             return "10";
-        } else if ("节日类".equals(Str(type))) {
+        } else if ("化妆品".equals(Str(type))) {
             return "11";
-        } else if ("节日类".equals(Str(type))) {
+        } else if ("食品".equals(Str(type))) {
             return "12";
-        } else if ("节日类".equals(Str(type))) {
+        } else if ("农药".equals(Str(type))) {
             return "13";
-        } else if ("节日类".equals(Str(type))) {
+        } else if ("兽药".equals(Str(type))) {
             return "14";
-        } else if ("节日类".equals(Str(type))) {
+        } else if ("饲料和饲料添加剂".equals(Str(type))) {
             return "15";
-        } else if ("节日类".equals(Str(type))) {
+        } else if ("酒类".equals(Str(type))) {
             return "16";
-        } else if ("节日类".equals(Str(type))) {
+        } else if ("教育和培训".equals(Str(type))) {
             return "17";
-        } else if ("节日类".equals(Str(type))) {
+        } else if ("房地产".equals(Str(type))) {
             return "18";
-        } else if ("节日类".equals(Str(type))) {
+        } else if ("投资".equals(Str(type))) {
             return "19";
-        } else if ("节日类".equals(Str(type))) {
+        } else if ("农作物和种子".equals(Str(type))) {
             return "20";
         } else {
-            return "NULL";
+            return "17";
         }
     }
 
